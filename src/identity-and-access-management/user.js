@@ -21,12 +21,29 @@ export default class User extends Domain {
 
     }
 
+    static fromJson(json) {
+        if (!json) return null;
+
+        const user = new User(json.firstName, json.lastName);
+        user.isAdmin = json.isAdmin ?? false;
+        user.createdAt = new Date(json.createdAt);
+
+        user.accounts = (json.accounts || []).map(
+            acc => Account.fromJson(acc)
+        );
+
+        user.uploads = [...(json.uploads || [])];
+        user.playlists = [...(json.playlists || [])];
+
+        return user;
+    }
+
+
     addAccount(provider, identifier, passwordHash = null) {
         const account = new Account(provider, identifier, passwordHash);
         this.accounts.push(account);
 
         const createdUser = this.toJson();
-        console.log(createdUser, 'toJson')
         this.raiseEvent('user.account.created', createdUser)
     }
 

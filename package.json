@@ -5,6 +5,7 @@
     "type": "module",
     "dependencies": {
         "bcrypt": "6.0.0",
-        "jsonwebtoken": "9.0.2"
+        "jsonwebtoken": "9.0.2",
+        "lowdb": "7.0.1"
     }
 }
