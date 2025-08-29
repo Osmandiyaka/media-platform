@@ -2,6 +2,7 @@ import Command from './command.js';
 import { logger } from '../../share/logger.js';
 import { assertEmail } from '../../share/validation.js';
 import SessionManager from '../session-manager.js';
+import AppEvent from '../../share/event.js';
 
 export default class SignInCommand extends Command {
     constructor(readline, userManager) {
@@ -15,8 +16,7 @@ export default class SignInCommand extends Command {
         const password = await this.prompt("Password >");
 
         const authenticationResult = await this.userManager.authenticateLocal(email, password);
-
-        logger.info(`🎟️ Token: ${authenticationResult.token}`);
         SessionManager.saveToken(authenticationResult.token);
+        AppEvent.emit('command.signin')
     }
 }
