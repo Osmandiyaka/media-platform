@@ -1,0 +1,21 @@
+{
+  "users": [
+    {
+      "firstName": "Osman",
+      "lastName": "Diyaka",
+      "accounts": [
+        {
+          "provider": "local",
+          "identifier": "suulisindiyaka@gmail.com",
+          "passwordHash": "$2b$10$CUKPfyq7Q/ImbfgjCcx5/uu.VrQ4KC/QqOP8H.w2hO2qLAeFyjZd6",
+          "createdAt": "2025-08-29T12:31:34.004Z",
+          "lastLogin": null
+        }
+      ],
+      "uploads": [],
+      "playlists": [],
+      "isAdmin": false,
+      "createdAt": "2025-08-29T12:31:33.917Z"
+    }
+  ]
+}

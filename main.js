@@ -1,11 +1,14 @@
 import Cli from './src/cli/cli.js';
-import UserManager from './src/identity-and-access-management/user-manager.js';
-import UserProvider from './src/identity-and-access-management/user-provider.js';
-
+import * as config from './configuration.js';
+import buildContainer from './build-container.js'
 
 (async function main() {
-    const userProvider = new UserProvider();
-    const userManager = new UserManager(userProvider);
-    const cli = new Cli(userManager);
-    cli.run();
-})();
+    const container = buildContainer(config);
+    const { userManager, tcpServer } = container;
+    function getCommands() {
+
+    }
+    const commands = getCommands();
+    const cli = new Cli({ userManager, tcpServer, commands });
+    await cli.run();
+})()
